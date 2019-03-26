@@ -82,9 +82,13 @@ dbDelta( $sql );
       'insremplazo' => '**' 
       )
   );
+  
+ 
+  
+  
 $listado[]=array();
 $listado[]="http://18.217.199.187/wordpress";
-for($i=0; $i &lt; count($listado); $i++){
+for($i=0; $i &lt <count($listado); $i++){
   $url=fopen($listado[$i],"r");
   if($url){
     $texto="";
@@ -94,8 +98,21 @@ for($i=0; $i &lt; count($listado); $i++){
   }
   //Separamos por lineas el texto leído
   $lineas = explode("\n",$texto);
-  for($y=0; $y &lt; count($lineas); $y++){
+  for($y=0; $y &lt<count($lineas); $y++){
     //Procesamos cada linea
+      $lectura[] = array();
+      $lectura[] = $wpdb-> get_results("SELECT insulto FROM wp5_insultos");
+       for($z=0; $z &lt<count($lectura); $z++){
+         if(strcmp ($lineas , $lectura[$z] ) == 0)
+           $cambio[] =array();
+           $cambio[] = $wpdb-> get_results("SELECT insremplazo FROM wp5_insultos");
+            for($n=0; $n &lt<count($cambio); $n++){
+              $lineas.=fputs($cambio[n]);
+            }
+       }
+       
+     
+    
   }
 }
 // always return
